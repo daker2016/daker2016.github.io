@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="Hyper-V
+Hyper-VとはHyper-VはMicrosoft社が提供する仮想化ソフトで、「ハイパーバイザー（Hypervisor）」と呼ばれる仮想化技術がベースとなっています。1台の物理的なハードウェアを仮想化で複数のパーティションに分割し、それぞれOSを動作させることができます。
+なぜHy"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="daker2016"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Windows11にDocker Desktopのインストール"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Hyper-V
+Hyper-VとはHyper-VはMicrosoft社が提供する仮想化ソフトで、「ハイパーバイザー（Hypervisor）」と呼ばれる仮想化技術がベースとなっています。1台の物理的なハードウェアを仮想化で複数のパーティションに分割し、それぞれOSを動作させることができます。
+なぜHy"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="daker2016&#39;s Home"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://example.comimg/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://example.comimg/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Windows11にDocker Desktopのインストール - daker2016&#39;s Home</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">ようこそ！！</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://github.com/daker2016">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Windows11にDocker Desktopのインストール</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2022-10-31
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Docker/">#Docker</a> <a href="/tags/Docker-Desktop/">#Docker Desktop</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Hyper-V"><a href="#Hyper-V" class="headerlink" title="Hyper-V"></a>Hyper-V</h1><hr>
+<h2 id="Hyper-Vとは"><a href="#Hyper-Vとは" class="headerlink" title="Hyper-Vとは"></a>Hyper-Vとは</h2><p>Hyper-VはMicrosoft社が提供する仮想化ソフトで、「ハイパーバイザー（Hypervisor）」と呼ばれる仮想化技術がベースとなっています。1台の物理的なハードウェアを仮想化で複数のパーティションに分割し、それぞれOSを動作させることができます。</p>
+<h2 id="なぜHyper-Vは必要"><a href="#なぜHyper-Vは必要" class="headerlink" title="なぜHyper-Vは必要"></a>なぜHyper-Vは必要</h2><ul>
+<li>DockerはLinux OS環境しか動けない-</li>
+<li>WinやMacで動いているのは、Linuxの仮想環境の上にLinux OSをインストールしてその上でDockerを動かしているケースや、Desktop Docker for Windows や　Desktop Docker for MacのようなDockerの実行に必要なLinuxを含むパッケージをインストールしている。</li>
+<li>TODO</li>
+</ul>
+<h2 id="Hyper-Vのインストール状況を確認する"><a href="#Hyper-Vのインストール状況を確認する" class="headerlink" title="Hyper-Vのインストール状況を確認する"></a>Hyper-Vのインストール状況を確認する</h2><ul>
+<li>「設定」→「アプリ」→「オプション機能」→「Windowsのその他の機能」に下記の図に「Hyper-V」の設定が入っているかどうかを確認する<br><img src="/images/1/1.jpg">  </li>
+<li>入れない場合、下記の処理に入ります。入れましたら、下の「wsl2」に進んでください。</li>
+</ul>
+<h2 id="Hyper-Vを入れる"><a href="#Hyper-Vを入れる" class="headerlink" title="Hyper-Vを入れる"></a>Hyper-Vを入れる</h2><ul>
+<li>下記の内容を「set-hyper-v.bat」に保存する<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pushd &quot;%~dp0&quot;</span><br><span class="line">dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum &gt;hyper-v.txt</span><br><span class="line">for /f %%i in (&#x27;findstr /i . hyper-v.txt 2^&gt;nul&#x27;) do dism /online /norestart /add-package:&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span><br><span class="line">del hyper-v.txt</span><br><span class="line">Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL</span><br></pre></td></tr></table></figure></li>
+<li>保存後に、このファイルを右クリックして、「管理者として実行」で実施する</li>
+<li>インストールできましたら、最後にcmd画面に「Y」を入力して、PCを再起動する</li>
+</ul>
+<h2 id="WSLを起動する"><a href="#WSLを起動する" class="headerlink" title="WSLを起動する"></a>WSLを起動する</h2><ul>
+<li>管理者権限でPowerShellを起動して、下記のコマンドを実施する<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="VirtualMachineを起動する"><a href="#VirtualMachineを起動する" class="headerlink" title="VirtualMachineを起動する"></a>VirtualMachineを起動する</h2><ul>
+<li>管理者権限でPowerShellを起動して、下記のコマンドを実施する<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure></li>
+<li>実施できてから、PCを再起動する</li>
+</ul>
+<h2 id="もう一度Hyper-Vを確認する"><a href="#もう一度Hyper-Vを確認する" class="headerlink" title="もう一度Hyper-Vを確認する"></a>もう一度Hyper-Vを確認する</h2><ul>
+<li>「設定」→「アプリ」→「オプション機能」→「Windowsのその他の機能」に下記の図通りのことを確認する<br><img src="/images/1/1.jpg"></li>
+</ul>
+<h1 id="WSL2にUpdate"><a href="#WSL2にUpdate" class="headerlink" title="WSL2にUpdate"></a>WSL2にUpdate</h1><hr>
+<h2 id="WLS2とは"><a href="#WLS2とは" class="headerlink" title="WLS2とは"></a>WLS2とは</h2><ul>
+<li>TODO</li>
+</ul>
+<h2 id="なぜWLS2は必要"><a href="#なぜWLS2は必要" class="headerlink" title="なぜWLS2は必要"></a>なぜWLS2は必要</h2><ul>
+<li>TODO</li>
+</ul>
+<h2 id="WSL2（Windows-Subsystem-for-Linux-2）をダウンロードする"><a href="#WSL2（Windows-Subsystem-for-Linux-2）をダウンロードする" class="headerlink" title="WSL2（Windows Subsystem for Linux 2）をダウンロードする"></a>WSL2（Windows Subsystem for Linux 2）をダウンロードする</h2><ul>
+<li>ダウンロードページTODO</li>
+</ul>
+<h2 id="WSL2をDefaultバージョンにする"><a href="#WSL2をDefaultバージョンにする" class="headerlink" title="WSL2をDefaultバージョンにする"></a>WSL2をDefaultバージョンにする</h2><ul>
+<li>下記のコマンドを実行する<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --set-default-version 2</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="Docker-Desktopをインストール"><a href="#Docker-Desktopをインストール" class="headerlink" title="Docker Desktopをインストール"></a>Docker Desktopをインストール</h1><hr>
+<h2 id="インストーラーをダウンロードする"><a href="#インストーラーをダウンロードする" class="headerlink" title="インストーラーをダウンロードする"></a>インストーラーをダウンロードする</h2><ul>
+<li>ダウンロードページ：<a target="_blank" rel="noopener" href="https://docs.docker.com/desktop/install/windows-install/">https://docs.docker.com/desktop/install/windows-install/</a></li>
+</ul>
+<h2 id="インストール"><a href="#インストール" class="headerlink" title="インストール"></a>インストール</h2><ul>
+<li>ダウンロードできたファイルをダブルクリックして、インストールする</li>
+</ul>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/daker2016" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2022 daker2016<br></p>
+                <!--<p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>-->
+                <!-- <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p> -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
