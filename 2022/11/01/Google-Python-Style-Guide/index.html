@@ -298,7 +298,21 @@ Emacs使うユーザはそのままでも大丈夫です
 <h4 id="定義-1"><a href="#定義-1" class="headerlink" title="定義"></a>定義</h4><ul>
 <li>Exceptionsは正常のコントロールフローを停止して、エラーまたは他の異常条件を処理すること</li>
 </ul>
-<h4 id="メリット-2"><a href="#メリット-2" class="headerlink" title="メリット"></a>メリット</h4><h4 id="デメリット-2"><a href="#デメリット-2" class="headerlink" title="デメリット"></a>デメリット</h4><h4 id="結論-2"><a href="#結論-2" class="headerlink" title="結論"></a>結論</h4><h4 id="例-2"><a href="#例-2" class="headerlink" title="例"></a>例</h4>
+<h4 id="メリット-2"><a href="#メリット-2" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>通常の操作コードの制御フローは、エラー処理コードによって乱雑になりません。 また、</li>
+<li>特定の条件が発生したときに、制御フローが複数のフレームをスキップすることもできます。たとえば、エラー コードを配管する代わりに、N 個のネストされた関数から 1 つのステップで戻ることができます。</li>
+</ul>
+<h4 id="デメリット-2"><a href="#デメリット-2" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>処理フローを難しくになって理解しにくい可能性がある</li>
+<li>ライブラリを呼び出すときに、エラーケースは見落としやすい</li>
+</ul>
+<h4 id="結論-2"><a href="#結論-2" class="headerlink" title="結論"></a>結論</h4><ul>
+<li>下記の条件に従う必要がある<ul>
+<li>s</li>
+</ul>
+</li>
+</ul>
+<h4 id="例-2"><a href="#例-2" class="headerlink" title="例"></a>例</h4>
 
                 
             </div>
