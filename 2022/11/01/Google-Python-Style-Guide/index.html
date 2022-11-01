@@ -13,9 +13,12 @@
     
 
     
-        <meta name="description" content="Hyper-V
-Hyper-VとはHyper-VはMicrosoft社が提供する仮想化ソフトで、「ハイパーバイザー（Hypervisor）」と呼ばれる仮想化技術がベースとなっています。1台の物理的なハードウェアを仮想化で複数のパーティションに分割し、それぞれOSを動作させることができます。
-なぜHy"/>
+        <meta name="description" content="Google Python Style Guide
+背景
+PythonはGoogle社によく使われる動的プログラミング言語
+Google社のGithubに「styleguide」ブランチにVim設定用のconfigファイルが用意している
+Emacs使うユーザはそのままでも大丈夫です
+自動的にFoma"/>
     
 
     <!--Author-->
@@ -25,14 +28,17 @@ Hyper-VとはHyper-VはMicrosoft社が提供する仮想化ソフトで、「ハ
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Windows11にDocker Desktopのインストール"/>
+        <meta property="og:title" content="Google Python Style Guide"/>
     
 
     <!--Open Graph Description-->
     
-        <meta property="og:description" content="Hyper-V
-Hyper-VとはHyper-VはMicrosoft社が提供する仮想化ソフトで、「ハイパーバイザー（Hypervisor）」と呼ばれる仮想化技術がベースとなっています。1台の物理的なハードウェアを仮想化で複数のパーティションに分割し、それぞれOSを動作させることができます。
-なぜHy"/>
+        <meta property="og:description" content="Google Python Style Guide
+背景
+PythonはGoogle社によく使われる動的プログラミング言語
+Google社のGithubに「styleguide」ブランチにVim設定用のconfigファイルが用意している
+Emacs使うユーザはそのままでも大丈夫です
+自動的にFoma"/>
     
 
     <!--Open Graph Site Name-->
@@ -59,7 +65,7 @@ Hyper-VとはHyper-VはMicrosoft社が提供する仮想化ソフトで、「ハ
 
     <!-- Title -->
     
-    <title>Windows11にDocker Desktopのインストール - daker2016&#39;s Home</title>
+    <title>Google Python Style Guide - daker2016&#39;s Home</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -171,13 +177,13 @@ Hyper-VとはHyper-VはMicrosoft社が提供する仮想化ソフトで、「ハ
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>Windows11にDocker Desktopのインストール</h1>
+                    <h1>Google Python Style Guide</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
                         
                         
-                            2022-10-31
+                            2022-11-01
                         
                     </span>
                 </div>
@@ -198,7 +204,7 @@ Hyper-VとはHyper-VはMicrosoft社が提供する仮想化ソフトで、「ハ
                         
 
 
-<a href="/tags/Docker/">#Docker</a> <a href="/tags/Docker-Desktop/">#Docker Desktop</a>
+<a href="/tags/Python/">#Python</a> <a href="/tags/Google-Python-Style-Guild/">#Google Python Style Guild</a>
 
 
                     
@@ -207,7 +213,7 @@ Hyper-VとはHyper-VはMicrosoft社が提供する仮想化ソフトで、「ハ
                     
                         
 
-<a href="/categories/Docker-And-K8S/">Docker And K8S</a>
+<a href="/categories/Python/">Python</a>
 
                     
                 </div>
@@ -218,51 +224,53 @@ Hyper-VとはHyper-VはMicrosoft社が提供する仮想化ソフトで、「ハ
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h1 id="Hyper-V"><a href="#Hyper-V" class="headerlink" title="Hyper-V"></a>Hyper-V</h1><hr>
-<h2 id="Hyper-Vとは"><a href="#Hyper-Vとは" class="headerlink" title="Hyper-Vとは"></a>Hyper-Vとは</h2><p>Hyper-VはMicrosoft社が提供する仮想化ソフトで、「ハイパーバイザー（Hypervisor）」と呼ばれる仮想化技術がベースとなっています。1台の物理的なハードウェアを仮想化で複数のパーティションに分割し、それぞれOSを動作させることができます。</p>
-<h2 id="なぜHyper-Vは必要"><a href="#なぜHyper-Vは必要" class="headerlink" title="なぜHyper-Vは必要"></a>なぜHyper-Vは必要</h2><ul>
-<li>DockerはLinux OS環境しか動けない-</li>
-<li>WinやMacで動いているのは、Linuxの仮想環境の上にLinux OSをインストールしてその上でDockerを動かしているケースや、Desktop Docker for Windows や　Desktop Docker for MacのようなDockerの実行に必要なLinuxを含むパッケージをインストールしている。</li>
-<li>Hyper-V上にLinux仮想マシンを立ててそこでDockerを実行する</li>
+                <h1 id="Google-Python-Style-Guide"><a href="#Google-Python-Style-Guide" class="headerlink" title="Google Python Style Guide"></a>Google Python Style Guide</h1><hr>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><ul>
+<li>PythonはGoogle社によく使われる動的プログラミング言語</li>
+<li>Google社のGithubに「styleguide」ブランチにVim設定用のconfigファイルが用意している</li>
+<li>Emacs使うユーザはそのままでも大丈夫です</li>
+<li>自動的にFomatterツール<a target="_blank" rel="noopener" href="https://github.com/google/yapf/">yapf</a>はいろいろなチームを採用している　※PEP8とGoogle Python Style両方ともサポートしている</li>
 </ul>
-<h2 id="Hyper-Vのインストール状況を確認する"><a href="#Hyper-Vのインストール状況を確認する" class="headerlink" title="Hyper-Vのインストール状況を確認する"></a>Hyper-Vのインストール状況を確認する</h2><ul>
-<li>「設定」→「アプリ」→「オプション機能」→「Windowsのその他の機能」に下記の図に「Hyper-V」の設定が入っているかどうかを確認する<br><img src="/images/1/1.jpg">  </li>
-<li>入れない場合、下記の処理に入ります。入れましたら、下の「wsl2」に進んでください。</li>
+<h2 id="Python-Language-Rules"><a href="#Python-Language-Rules" class="headerlink" title="Python Language Rules"></a>Python Language Rules</h2><h3 id="Imports"><a href="#Imports" class="headerlink" title="Imports"></a>Imports</h3><h4 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>対象：package、module</li>
+<li>対象外：class、function</li>
+<li>‘type’ Moduleは例外 →　例：from typing import Any, TypeVar</li>
 </ul>
-<h2 id="Hyper-Vを入れる"><a href="#Hyper-Vを入れる" class="headerlink" title="Hyper-Vを入れる"></a>Hyper-Vを入れる</h2><ul>
-<li>下記の内容を「set-hyper-v.bat」に保存する<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pushd &quot;%~dp0&quot;</span><br><span class="line">dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum &gt;hyper-v.txt</span><br><span class="line">for /f %%i in (&#x27;findstr /i . hyper-v.txt 2^&gt;nul&#x27;) do dism /online /norestart /add-package:&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span><br><span class="line">del hyper-v.txt</span><br><span class="line">Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL</span><br></pre></td></tr></table></figure></li>
-<li>保存後に、このファイルを右クリックして、「管理者として実行」で実施する</li>
-<li>インストールできましたら、最後にcmd画面に「Y」を入力して、PCを再起動する</li>
+<h4 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h4><ul>
+<li>モジュール間のコードの再利用メカニズム。 例：Module BにModule Aの内容を使いたい場合、Moduleをimportすれば、使えます</li>
 </ul>
-<h2 id="WSLを起動する"><a href="#WSLを起動する" class="headerlink" title="WSLを起動する"></a>WSLを起動する</h2><ul>
-<li>管理者権限でPowerShellを起動して、下記のコマンドを実施する<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</span><br></pre></td></tr></table></figure></li>
+<h4 id="メリット"><a href="#メリット" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>namespaceの管理規則は簡単です。</li>
+<li>各識別子元の指定方式は一致すること　例：x.Obj→　対象objはmodule xに定義されることを示している</li>
 </ul>
-<h2 id="VirtualMachineを起動する"><a href="#VirtualMachineを起動する" class="headerlink" title="VirtualMachineを起動する"></a>VirtualMachineを起動する</h2><ul>
-<li>管理者権限でPowerShellを起動して、下記のコマンドを実施する<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure></li>
-<li>実施できてから、PCを再起動する</li>
+<h4 id="デメリット"><a href="#デメリット" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>moduleの名前は競合することがある</li>
+<li>あるmoduleの名前は長すぎで、ソースは読みずらいまたはフォーマットしにくい</li>
 </ul>
-<h2 id="もう一度Hyper-Vを確認する"><a href="#もう一度Hyper-Vを確認する" class="headerlink" title="もう一度Hyper-Vを確認する"></a>もう一度Hyper-Vを確認する</h2><ul>
-<li>「設定」→「アプリ」→「オプション機能」→「Windowsのその他の機能」に下記の図通りのことを確認する<br><img src="/images/1/1.jpg"></li>
+<h4 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h4><ul>
+<li><code>import x</code>：packageとmoduleのimporting</li>
+<li><code>from x import y</code>：xはpackage名、yはmodeule名</li>
+<li><code>from x import y as z</code>：同時にimportされている二つ以上のmoduleの名前が重複またはmodule yの名前が長すぎの場合、別名zを付ける</li>
+<li><code>import y as z</code>：zは標準略称の場合のみを使う　例：import nump as np</li>
 </ul>
-<h1 id="WSL2にUpdate"><a href="#WSL2にUpdate" class="headerlink" title="WSL2にUpdate"></a>WSL2にUpdate</h1><hr>
-<h2 id="WLS2とは"><a href="#WLS2とは" class="headerlink" title="WLS2とは"></a>WLS2とは</h2><ul>
-<li>TODO</li>
+<h4 id="例"><a href="#例" class="headerlink" title="例"></a>例</h4><ul>
+<li>「sound.effects.echo」をimportする</li>
 </ul>
-<h2 id="なぜWLS2は必要"><a href="#なぜWLS2は必要" class="headerlink" title="なぜWLS2は必要"></a>なぜWLS2は必要</h2><ul>
-<li>TODO</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from sound.effects import echo</span><br><span class="line">...</span><br><span class="line">echo.EchoFilter(input, output, delay=0.7, atten=4)</span><br></pre></td></tr></table></figure>
+
+<h4 id="例外"><a href="#例外" class="headerlink" title="例外"></a>例外</h4><ul>
+<li>下記のModuleに定義されているSymbols（pythonのドキュメントではクラス名，関数名や変数名を総称して、名前とかシンボルと呼んでいるよう）はstatic analysis and type checkingのため、<code>import module名</code>ではなくて、<code>from module名 import Symbol名</code>にする必要があります<ul>
+<li><code>typing</code> module</li>
+<li><code>collections.abc</code> module</li>
+<li><code>typing_extensions</code> module</li>
 </ul>
-<h2 id="WSL2（Windows-Subsystem-for-Linux-2）をダウンロードする"><a href="#WSL2（Windows-Subsystem-for-Linux-2）をダウンロードする" class="headerlink" title="WSL2（Windows Subsystem for Linux 2）をダウンロードする"></a>WSL2（Windows Subsystem for Linux 2）をダウンロードする</h2><ul>
-<li>ダウンロードページTODO</li>
+</li>
+<li><code>six.moves</code>module中にのリダイレクト　<ul>
+<li><code>six.moves</code>はPython2とPython3のコード互換性を実現する</li>
+<li>Python3は標準ライブラリを再編成、一部functionsを別moduleに移動しました。<code>six.moves</code> moduleは一貫性のあるインタフェースを提供して、Python2とPython3のコード互換性を保障する.Importの：<code>from six.moves import urllib</code> </li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/34989206/what-does-from-six-moves-import-urllib-do-in-python">stackoverflow</a>を参照してください。</li>
 </ul>
-<h2 id="WSL2をDefaultバージョンにする"><a href="#WSL2をDefaultバージョンにする" class="headerlink" title="WSL2をDefaultバージョンにする"></a>WSL2をDefaultバージョンにする</h2><ul>
-<li>下記のコマンドを実行する<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --set-default-version 2</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="Docker-Desktopをインストール"><a href="#Docker-Desktopをインストール" class="headerlink" title="Docker Desktopをインストール"></a>Docker Desktopをインストール</h1><hr>
-<h2 id="インストーラーをダウンロードする"><a href="#インストーラーをダウンロードする" class="headerlink" title="インストーラーをダウンロードする"></a>インストーラーをダウンロードする</h2><ul>
-<li>ダウンロードページ：<a target="_blank" rel="noopener" href="https://docs.docker.com/desktop/install/windows-install/">https://docs.docker.com/desktop/install/windows-install/</a></li>
-</ul>
-<h2 id="インストール"><a href="#インストール" class="headerlink" title="インストール"></a>インストール</h2><ul>
-<li>ダウンロードできたファイルをダブルクリックして、インストールする</li>
+</li>
 </ul>
 
 
