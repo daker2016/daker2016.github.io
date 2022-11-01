@@ -234,7 +234,7 @@ Emacs使うユーザはそのままでも大丈夫です
 <h2 id="Python-Language-Rules"><a href="#Python-Language-Rules" class="headerlink" title="Python Language Rules"></a>Python Language Rules</h2><h3 id="Imports"><a href="#Imports" class="headerlink" title="Imports"></a>Imports</h3><h4 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h4><ul>
 <li>対象：package、module</li>
 <li>対象外：class、function</li>
-<li>‘type’ Moduleは例外 →　例：from typing import Any, TypeVar</li>
+<li>‘type’ Moduleは例外 →　例：<code>from typing import Any, TypeVar</code></li>
 </ul>
 <h4 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h4><ul>
 <li>モジュール間のコードの再利用メカニズム。 例：Module BにModule Aの内容を使いたい場合、Moduleをimportすれば、使えます</li>
@@ -254,10 +254,8 @@ Emacs使うユーザはそのままでも大丈夫です
 <li><code>import y as z</code>：zは標準略称の場合のみを使う　例：import nump as np</li>
 </ul>
 <h4 id="例"><a href="#例" class="headerlink" title="例"></a>例</h4><ul>
-<li>「sound.effects.echo」をimportする</li>
+<li><code>sound.effects.echo</code>をimportする<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from sound.effects import echo</span><br><span class="line">...</span><br><span class="line">echo.EchoFilter(input, output, delay=0.7, atten=4)</span><br></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from sound.effects import echo</span><br><span class="line">...</span><br><span class="line">echo.EchoFilter(input, output, delay=0.7, atten=4)</span><br></pre></td></tr></table></figure>
-
 <h4 id="例外"><a href="#例外" class="headerlink" title="例外"></a>例外</h4><ul>
 <li>下記のModuleに定義されているSymbols（pythonのドキュメントではクラス名，関数名や変数名を総称して、名前とかシンボルと呼んでいるよう）はstatic analysis and type checkingのため、<code>import module名</code>ではなくて、<code>from module名 import Symbol名</code>にする必要があります<ul>
 <li><code>typing</code> module</li>
@@ -272,7 +270,36 @@ Emacs使うユーザはそのままでも大丈夫です
 </ul>
 </li>
 </ul>
-
+<h3 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h3><h4 id="Tips-1"><a href="#Tips-1" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>フルパス名で各moduleをimportする</li>
+</ul>
+<h4 id="メリット-1"><a href="#メリット-1" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>module名の競合することを防ぐ</li>
+<li>予想外の誤る場所のmoduleをimportすることを防ぐ</li>
+<li>modulesを探しやすいため</li>
+</ul>
+<h4 id="デメリット-1"><a href="#デメリット-1" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>パッケージ階層を複製する必要があるため、Deployは難しくになっている</li>
+</ul>
+<h4 id="結論-1"><a href="#結論-1" class="headerlink" title="結論"></a>結論</h4><ul>
+<li>フルパス名で各moduleをimportする</li>
+</ul>
+<h4 id="例-1"><a href="#例-1" class="headerlink" title="例"></a>例</h4><ul>
+<li>良い例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Reference absl.flags in code with the complete name (verbose).</span><br><span class="line">import absl.flags</span><br><span class="line">from doctor.who import jodie</span><br><span class="line"></span><br><span class="line">_FOO = absl.flags.DEFINE_string(...)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Reference flags in code with just the module name (common).</span><br><span class="line">from absl import flags</span><br><span class="line">from doctor.who import jodie</span><br><span class="line"></span><br><span class="line">_FOO = flags.DEFINE_string(...)</span><br></pre></td></tr></table></figure></li>
+<li>悪い例：<ul>
+<li>前提：今編集中のfileは「jodie.py」と同じpackage配下になっている<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Unclear what module the author wanted and what will be imported.  The actual</span><br><span class="line"># import behavior depends on external factors controlling sys.path.</span><br><span class="line"># Which possible jodie module did the author intend to import?</span><br><span class="line">import jodie</span><br></pre></td></tr></table></figure></li>
+<li>main処理（コードの入り口）のファイルが<code>sys.path</code>に設定されていることは保障できないため、<code>import jodie</code>は現在パス配下の<code>jodie.py</code>をimportするではなく、<code>sys.path</code>にパスが設定されているの3rd partyライブラリのものをimportしまう可能性がある</li>
+</ul>
+</li>
+</ul>
+<h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><h4 id="Tips-2"><a href="#Tips-2" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>Exceptionsが使えますが、注意が必要です</li>
+</ul>
+<h4 id="定義-1"><a href="#定義-1" class="headerlink" title="定義"></a>定義</h4><ul>
+<li>Exceptionsは正常のコントロールフローを停止して、エラーまたは他の異常条件を処理すること</li>
+</ul>
+<h4 id="メリット-2"><a href="#メリット-2" class="headerlink" title="メリット"></a>メリット</h4><h4 id="デメリット-2"><a href="#デメリット-2" class="headerlink" title="デメリット"></a>デメリット</h4><h4 id="結論-2"><a href="#結論-2" class="headerlink" title="結論"></a>結論</h4><h4 id="例-2"><a href="#例-2" class="headerlink" title="例"></a>例</h4>
 
                 
             </div>
