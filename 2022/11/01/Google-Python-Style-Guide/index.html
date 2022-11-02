@@ -347,9 +347,18 @@ Emacs使うユーザはそのままでも大丈夫です
 <h4 id="定義-3"><a href="#定義-3" class="headerlink" title="定義"></a>定義</h4><ul>
 <li>classはmethod、function、class内部に定義できる</li>
 <li>functionはmethod、function内部に定義できる</li>
-<li></li>
+<li>ネストされた関数はenclosing scops内定義された変数に対して、read権限しかない</li>
 </ul>
-<h4 id="メリット-4"><a href="#メリット-4" class="headerlink" title="メリット"></a>メリット</h4><h4 id="デメリット-4"><a href="#デメリット-4" class="headerlink" title="デメリット"></a>デメリット</h4><h4 id="結論-4"><a href="#結論-4" class="headerlink" title="結論"></a>結論</h4>
+<h4 id="メリット-4"><a href="#メリット-4" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>一定範囲内しか使えないユーティリティクラスと関数が定義できる。decorator中に良く使われている</li>
+</ul>
+<h4 id="デメリット-4"><a href="#デメリット-4" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>ネストされた関数とクラスは直接にテストできない。ネスト処理は関数を長くになって、読みにくいかもしれません</li>
+</ul>
+<h4 id="結論-4"><a href="#結論-4" class="headerlink" title="結論"></a>結論</h4><ul>
+<li>使用するときに注意点がある。self または cls 以外のローカル値を閉じる場合を除いて、ネストされた関数またはクラスは避けてください。モジュールのユーザーから隠すためだけに関数をネストしないでください。 代わりに、モジュール レベルでその名前の前に _ を付けて、テストから引き続きアクセスできるようにします。</li>
+</ul>
+
 
                 
             </div>
