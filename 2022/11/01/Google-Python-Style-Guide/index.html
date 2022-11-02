@@ -339,9 +339,17 @@ Emacs使うユーザはそのままでも大丈夫です
 <h4 id="結論-3"><a href="#結論-3" class="headerlink" title="結論"></a>結論</h4><ul>
 <li>Global変数の使用を避けたほうがいい</li>
 <li>どうしても必要な時に、moduleレベルの変数として定義して、名前に<code>_</code>のprefixを付けて、外部にこの変数をアクセスしたい場合、public module関数を用意して呼び出すようにしたほうがいい</li>
-<li>module-level定数は推奨です。例：_MAX_HOLY_HANDGRENADE_COUNT &#x3D; 3。定数名前は大文字とアンダーバーで定義する必要がある。</li>
+<li>module-level定数は推奨です。例：<code>_MAX_HOLY_HANDGRENADE_COUNT = 3</code>。定数名前は大文字とアンダーバーで定義する必要がある。</li>
 </ul>
-<h3 id="Nested-x2F-Local-x2F-Inner-Classes-and-Functions"><a href="#Nested-x2F-Local-x2F-Inner-Classes-and-Functions" class="headerlink" title="Nested&#x2F;Local&#x2F;Inner Classes and Functions"></a>Nested&#x2F;Local&#x2F;Inner Classes and Functions</h3><h4 id="Tips-4"><a href="#Tips-4" class="headerlink" title="Tips"></a>Tips</h4>
+<h3 id="Nested-x2F-Local-x2F-Inner-Classes-and-Functions"><a href="#Nested-x2F-Local-x2F-Inner-Classes-and-Functions" class="headerlink" title="Nested&#x2F;Local&#x2F;Inner Classes and Functions"></a>Nested&#x2F;Local&#x2F;Inner Classes and Functions</h3><h4 id="Tips-4"><a href="#Tips-4" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>ネストされたローカル関数またはクラスは、ローカル変数を閉じるために使用する場合に問題ありません。 内部クラスは問題ありません。</li>
+</ul>
+<h4 id="定義-3"><a href="#定義-3" class="headerlink" title="定義"></a>定義</h4><ul>
+<li>classはmethod、function、class内部に定義できる</li>
+<li>functionはmethod、function内部に定義できる</li>
+<li></li>
+</ul>
+<h4 id="メリット-4"><a href="#メリット-4" class="headerlink" title="メリット"></a>メリット</h4><h4 id="デメリット-4"><a href="#デメリット-4" class="headerlink" title="デメリット"></a>デメリット</h4><h4 id="結論-4"><a href="#結論-4" class="headerlink" title="結論"></a>結論</h4>
 
                 
             </div>
