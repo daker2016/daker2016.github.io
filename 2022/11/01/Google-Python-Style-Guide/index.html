@@ -402,8 +402,100 @@ Emacs使うユーザはそのままでも大丈夫です
 <h3 id="Generators"><a href="#Generators" class="headerlink" title="Generators"></a>Generators</h3><h4 id="Tips-7"><a href="#Tips-7" class="headerlink" title="Tips"></a>Tips</h4><ul>
 <li>必要な場合、Generatorsを使います</li>
 </ul>
-<h4 id="定義-6"><a href="#定義-6" class="headerlink" title="定義"></a>定義</h4><p>- </p>
-<h4 id="メリット-7"><a href="#メリット-7" class="headerlink" title="メリット"></a>メリット</h4><h4 id="デメリット-7"><a href="#デメリット-7" class="headerlink" title="デメリット"></a>デメリット</h4><h4 id="結論-7"><a href="#結論-7" class="headerlink" title="結論"></a>結論</h4><h4 id="例-5"><a href="#例-5" class="headerlink" title="例"></a>例</h4>
+<h4 id="定義-6"><a href="#定義-6" class="headerlink" title="定義"></a>定義</h4><ul>
+<li>ジェネレーター関数は、yield ステートメントを実行するたびに値を生成する反復子を返します。 値を生成した後、次の値が必要になるまで、ジェネレーター関数の実行時の状態は中断されます。</li>
+<li>Generators:<a target="_blank" rel="noopener" href="https://qiita.com/keitakurita/items/5a31b902db6adfa45a70">https://qiita.com/keitakurita/items/5a31b902db6adfa45a70</a></li>
+</ul>
+<h4 id="メリット-7"><a href="#メリット-7" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>ローカル変数の状態と制御フローが呼び出しごとに保持されるため、コードが単純になります。 ジェネレーターは、一度に値のリスト全体を作成する関数よりも少ないメモリを使用します。</li>
+</ul>
+<h4 id="デメリット-7"><a href="#デメリット-7" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>基本はない</li>
+</ul>
+<h4 id="結論-7"><a href="#結論-7" class="headerlink" title="結論"></a>結論</h4><ul>
+<li>推奨です。docstring 作成する時に<code>Returns:</code>より<code>Yields:</code>を使ったほうがいい</li>
+<li>ジェネレーターが高価なリソースを管理している場合は、必ずクリーンアップを強制してください。</li>
+<li>クリーンアップを行う良い方法は、ジェネレーターをコンテキストマネージャー<a target="_blank" rel="noopener" href="https://peps.python.org/pep-0533/">PEP-0533</a>でラップすることです。</li>
+</ul>
+<h3 id="Lambda-Functions"><a href="#Lambda-Functions" class="headerlink" title="Lambda Functions"></a>Lambda Functions</h3><h4 id="Tips-8"><a href="#Tips-8" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>1行ならOKです。ラムダを使用した map() または filter() よりもジェネレーター式を優先する</li>
+</ul>
+<h4 id="定義-7"><a href="#定義-7" class="headerlink" title="定義"></a>定義</h4><ul>
+<li>ラムダは、ステートメントではなく式で匿名関数を定義します。</li>
+</ul>
+<h4 id="メリット-8"><a href="#メリット-8" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>便利</li>
+</ul>
+<h4 id="デメリット-8"><a href="#デメリット-8" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>ローカル関数よりも読み取りとデバッグが困難です。 名前がないということは、スタック トレースが理解しにくいことを意味します。 関数には式しか含まれないため、表現力が制限されます。</li>
+</ul>
+<h4 id="結論-8"><a href="#結論-8" class="headerlink" title="結論"></a>結論</h4><ul>
+<li>ワンライナーに使用しても大丈夫です。 ラムダ関数内のコードが 60 ～ 80 文字を超える場合は、通常のネストされた関数として定義する方がよいでしょう。</li>
+<li>乗算などの一般的な演算には、ラムダ関数の代わりに operator モジュールの関数を使用します。 たとえば、ラムダ x, y: x * y よりも operator.mul を優先します。</li>
+</ul>
+<h3 id="Conditional-Expressions"><a href="#Conditional-Expressions" class="headerlink" title="Conditional Expressions"></a>Conditional Expressions</h3><h4 id="Tips-9"><a href="#Tips-9" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>シンプルなケースでOK。</li>
+</ul>
+<h4 id="定義-8"><a href="#定義-8" class="headerlink" title="定義"></a>定義</h4><ul>
+<li>条件式 (「三項演算子」と呼ばれることもあります) は、if ステートメントの構文を短くするメカニズムです。 例: x &#x3D; 1 if cond else 2.</li>
+</ul>
+<h4 id="メリット-9"><a href="#メリット-9" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>if 文よりも短くて便利です。</li>
+</ul>
+<h4 id="デメリット-9"><a href="#デメリット-9" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>if 文より読みにくいかもしれません。 式が長い場合、状態を特定するのが難しい場合があります。</li>
+</ul>
+<h4 id="結論-9"><a href="#結論-9" class="headerlink" title="結論"></a>結論</h4><ul>
+<li>単純な場合に使用しても問題ありません。 true-expression、if-expression、else-expression の各部分は 1 行に収まる必要があります。 より複雑な場合は、完全な if ステートメントを使用してください。</li>
+</ul>
+<h4 id="例-5"><a href="#例-5" class="headerlink" title="例"></a>例</h4><ul>
+<li>良い例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">one_line = &#x27;yes&#x27; if predicate(value) else &#x27;no&#x27;</span><br><span class="line">slightly_split = (&#x27;yes&#x27; if predicate(value)</span><br><span class="line">                  else &#x27;no, nein, nyet&#x27;)</span><br><span class="line">the_longest_ternary_style_that_can_be_done = (</span><br><span class="line">    &#x27;yes, true, affirmative, confirmed, correct&#x27;</span><br><span class="line">    if predicate(value)</span><br><span class="line">    else &#x27;no, false, negative, nay&#x27;)</span><br></pre></td></tr></table></figure></li>
+<li>悪い例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bad_line_breaking = (&#x27;yes&#x27; if predicate(value) else</span><br><span class="line">                     &#x27;no&#x27;)</span><br><span class="line">portion_too_long = (&#x27;yes&#x27;</span><br><span class="line">                    if some_long_module.some_long_predicate_function(</span><br><span class="line">                        really_long_variable_name)</span><br><span class="line">                    else &#x27;no, false, negative, nay&#x27;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Default-Argument-Values"><a href="#Default-Argument-Values" class="headerlink" title="Default Argument Values"></a>Default Argument Values</h3><h4 id="Tips-10"><a href="#Tips-10" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>多数の場合は大丈夫です。</li>
+</ul>
+<h4 id="定義-9"><a href="#定義-9" class="headerlink" title="定義"></a>定義</h4><ul>
+<li>関数のパラメータリストの最後に変数の値を指定できます (例: def foo(a, b&#x3D;0):)。 foo が 1 つの引数だけで呼び出された場合、b は 0 に設定されます。2 つの引数で呼び出された場合、b は 2 番目の引数の値を持ちます。</li>
+</ul>
+<h4 id="メリット-10"><a href="#メリット-10" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>多くの場合、多くのデフォルト値を使用する関数がありますが、まれにデフォルト値をオーバーライドしたい場合があります。 </li>
+<li>デフォルトの引数値は、まれな例外のために多くの関数を定義する必要なく、これを行う簡単な方法を提供します。 Python はオーバーロードされたメソッド&#x2F;関数をサポートしていないため、デフォルトの引数はオーバーロード動作を「偽装」する簡単な方法です。</li>
+</ul>
+<h4 id="デメリット-10"><a href="#デメリット-10" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>デフォルトの引数は、モジュールのロード時に 1 回評価されます。 引数がリストや辞書などの変更可能なオブジェクトである場合、これは問題を引き起こす可能性があります。 関数がオブジェクトを変更する場合 (たとえば、項目をリストに追加することによって)、デフォルト値が変更されます。</li>
+</ul>
+<h4 id="結論-10"><a href="#結論-10" class="headerlink" title="結論"></a>結論</h4><ul>
+<li>次の注意事項を守って使用してください。</li>
+<li>関数またはメソッドの定義で、可変オブジェクトをデフォルト値として使用しないでください。</li>
+</ul>
+<h4 id="例-6"><a href="#例-6" class="headerlink" title="例"></a>例</h4><ul>
+<li>良い例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def foo(a, b=None):</span><br><span class="line">    if b is None:</span><br><span class="line">        b = []</span><br><span class="line">def foo(a, b: Optional[Sequence] = None):</span><br><span class="line">    if b is None:</span><br><span class="line">        b = []</span><br><span class="line">def foo(a, b: Sequence = ()):  # Empty tuple OK since tuples are immutable.</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure></li>
+<li>悪い例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from absl import flags</span><br><span class="line">_FOO = flags.DEFINE_string(...)</span><br><span class="line"></span><br><span class="line">def foo(a, b=[]):</span><br><span class="line">    ...</span><br><span class="line">def foo(a, b=time.time()):  # The time the module was loaded???</span><br><span class="line">    ...</span><br><span class="line">def foo(a, b=_FOO.value):  # sys.argv has not yet been parsed...</span><br><span class="line">    ...</span><br><span class="line">def foo(a, b: Mapping = &#123;&#125;):  # Could still get passed to unchecked code.</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h3><h4 id="Tips-11"><a href="#Tips-11" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>プロパティは、簡単な計算やロジックを必要とする属性の取得または設定を制御するために使用できます。 プロパティの実装は、通常の属性アクセスの一般的な期待に一致する必要があります。つまり、安価で、簡単で、驚くべきことではありません。</li>
+</ul>
+<h4 id="定義-10"><a href="#定義-10" class="headerlink" title="定義"></a>定義</h4><ul>
+<li>属性を取得および設定するためのメソッド呼び出しを標準の属性アクセスとしてラップする方法。</li>
+</ul>
+<h4 id="メリット-11"><a href="#メリット-11" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>getter および setter メソッドの呼び出しではなく、属性アクセスおよび割り当て API を許可します。</li>
+<li>属性を読み取り専用にするために使用できます。</li>
+<li>計算を遅延させることができます。</li>
+<li>内部がクラス ユーザーとは独立して進化するときに、クラスのパブリック インターフェイスを維持する方法を提供します。</li>
+</ul>
+<h4 id="デメリット-11"><a href="#デメリット-11" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>演算子のオーバーロードと同じように、副作用を隠すことができます。</li>
+<li>サブクラスを混乱させる可能性があります。</li>
+</ul>
+<h4 id="結論-11"><a href="#結論-11" class="headerlink" title="結論"></a>結論</h4><ul>
+<li>プロパティは許可されますが、演算子のオーバーロードと同様に、必要な場合にのみ使用し、通常の属性アクセスの期待に一致させる必要があります。 それ以外の場合は、ゲッターとセッターの規則に従います。</li>
+<li>たとえば、内部属性を単に取得および設定するためにプロパティを使用することは許可されていません。計算は行われないため、プロパティは不要です (代わりに属性をパブリックにします)。 それに比べて、プロパティを使用して属性アクセスを制御したり、単純に導出された値を計算したりすることは許可されています。ロジックは単純で驚くべきことではありません。</li>
+<li>プロパティは @property デコレータで作成する必要があります。 プロパティ記述子を手動で実装することは、強力な機能と見なされます。</li>
+<li>プロパティによる継承は、明白ではない場合があります。 サブクラスがオーバーライドおよび拡張する可能性のある計算を実装するためにプロパティを使用しないでください。</li>
+</ul>
+
 
                 
             </div>
