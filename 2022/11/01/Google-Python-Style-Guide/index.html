@@ -358,7 +358,52 @@ Emacs使うユーザはそのままでも大丈夫です
 <h4 id="結論-4"><a href="#結論-4" class="headerlink" title="結論"></a>結論</h4><ul>
 <li>使用するときに注意点がある。self または cls 以外のローカル値を閉じる場合を除いて、ネストされた関数またはクラスは避けてください。モジュールのユーザーから隠すためだけに関数をネストしないでください。 代わりに、モジュール レベルでその名前の前に _ を付けて、テストから引き続きアクセスできるようにします。</li>
 </ul>
-
+<h3 id="Comprehensions-amp-Generator-Expressions"><a href="#Comprehensions-amp-Generator-Expressions" class="headerlink" title="Comprehensions &amp; Generator Expressions"></a>Comprehensions &amp; Generator Expressions</h3><h4 id="Tips-5"><a href="#Tips-5" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>簡単のケースは使います</li>
+</ul>
+<h4 id="定義-4"><a href="#定義-4" class="headerlink" title="定義"></a>定義</h4><ul>
+<li>List,Dict,Setは<code>map()、filter()またはlambda</code>を使わずに簡単、効率的なcontainerとiterator作られます</li>
+</ul>
+<h4 id="メリット-5"><a href="#メリット-5" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>comprehensionsは他の方法より簡単かつ分かりやすい</li>
+<li>Generatorはlist作成を避けるため、効率は良くになる</li>
+</ul>
+<h4 id="デメリット-5"><a href="#デメリット-5" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>複雑なcomprehensionsとGeneratorは読みにくい</li>
+</ul>
+<h4 id="結論-5"><a href="#結論-5" class="headerlink" title="結論"></a>結論</h4><ul>
+<li>簡単のケースは使う。</li>
+<li><code>mapping expression</code>、<code>for clause</code>、<code>filter expression</code>は一行に書く</li>
+<li>複数のfor処理またはfilterのケースは使わないほうがいい。forループにしたほうがいい</li>
+</ul>
+<h4 id="例-3"><a href="#例-3" class="headerlink" title="例"></a>例</h4><ul>
+<li>良い例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">result = [mapping_expr for value in iterable if filter_expr]</span><br><span class="line"></span><br><span class="line">result = [&#123;&#x27;key&#x27;: value&#125; for value in iterable</span><br><span class="line">          if a_long_filter_expression(value)]</span><br><span class="line"></span><br><span class="line">result = [complicated_transform(x)</span><br><span class="line">          for x in iterable if predicate(x)]</span><br><span class="line"></span><br><span class="line">descriptive_name = [</span><br><span class="line">    transform(&#123;&#x27;key&#x27;: key, &#x27;value&#x27;: value&#125;, color=&#x27;black&#x27;)</span><br><span class="line">    for key, value in generate_iterable(some_input)</span><br><span class="line">    if complicated_condition_is_met(key, value)</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">result = []</span><br><span class="line">for x in range(10):</span><br><span class="line">    for y in range(5):</span><br><span class="line">        if x * y &gt; 10:</span><br><span class="line">            result.append((x, y))</span><br><span class="line"></span><br><span class="line">return &#123;x: complicated_transform(x)</span><br><span class="line">        for x in long_generator_function(parameter)</span><br><span class="line">        if x is not None&#125;</span><br><span class="line"></span><br><span class="line">squares_generator = (x**2 for x in range(10))</span><br><span class="line"></span><br><span class="line">unique_names = &#123;user.name for user in users if user is not None&#125;</span><br><span class="line"></span><br><span class="line">eat(jelly_bean for jelly_bean in jelly_beans</span><br><span class="line">    if jelly_bean.color == &#x27;black&#x27;)</span><br></pre></td></tr></table></figure></li>
+<li>悪い例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">result = [complicated_transform(</span><br><span class="line">              x, some_argument=x+1)</span><br><span class="line">          for x in iterable if predicate(x)]</span><br><span class="line"></span><br><span class="line">result = [(x, y) for x in range(10) for y in range(5) if x * y &gt; 10]</span><br><span class="line"></span><br><span class="line">return ((x, y, z)</span><br><span class="line">        for x in range(5)</span><br><span class="line">        for y in range(5)</span><br><span class="line">        if x != y</span><br><span class="line">        for z in range(5)</span><br><span class="line">        if y != z)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Default-Iterators-and-Operators"><a href="#Default-Iterators-and-Operators" class="headerlink" title="Default Iterators and Operators"></a>Default Iterators and Operators</h3><h4 id="Tips-6"><a href="#Tips-6" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>サポートすれば、デフォルトiteratorsと型操作などを使います。たとえば、list、dict、file</li>
+</ul>
+<h4 id="定義-5"><a href="#定義-5" class="headerlink" title="定義"></a>定義</h4><ul>
+<li>コンテナ型、dict、listなど、デフォルトiteratorsとデータ関係テスト操作（in, not in）が定義されている</li>
+</ul>
+<h4 id="メリット-6"><a href="#メリット-6" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>デフォルトiteratorsと型操作は簡単、効率です。直接に操作などを示しています。</li>
+</ul>
+<h4 id="デメリット-6"><a href="#デメリット-6" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>メソッド名を読んでobjectsのデータ型は分からないです。でも、これもメリットとなっている</li>
+</ul>
+<h4 id="結論-6"><a href="#結論-6" class="headerlink" title="結論"></a>結論</h4><ul>
+<li>サポートすれば、デフォルトiteratorsと型操作などを使います。</li>
+</ul>
+<h4 id="例-4"><a href="#例-4" class="headerlink" title="例"></a>例</h4><ul>
+<li>良い例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for key in adict: ...</span><br><span class="line">if obj in alist: ...</span><br><span class="line">for line in afile: ...</span><br><span class="line">for k, v in adict.items(): ...</span><br></pre></td></tr></table></figure></li>
+<li>悪い例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for key in adict.keys(): ...</span><br><span class="line">for line in afile.readlines(): ...</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Generators"><a href="#Generators" class="headerlink" title="Generators"></a>Generators</h3><h4 id="Tips-7"><a href="#Tips-7" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>必要な場合、Generatorsを使います</li>
+</ul>
+<h4 id="定義-6"><a href="#定義-6" class="headerlink" title="定義"></a>定義</h4><p>- </p>
+<h4 id="メリット-7"><a href="#メリット-7" class="headerlink" title="メリット"></a>メリット</h4><h4 id="デメリット-7"><a href="#デメリット-7" class="headerlink" title="デメリット"></a>デメリット</h4><h4 id="結論-7"><a href="#結論-7" class="headerlink" title="結論"></a>結論</h4><h4 id="例-5"><a href="#例-5" class="headerlink" title="例"></a>例</h4>
 
                 
             </div>
