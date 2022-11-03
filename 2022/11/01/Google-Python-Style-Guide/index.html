@@ -537,6 +537,84 @@ Emacs使うユーザはそのままでも大丈夫です
 <h4 id="結論-13"><a href="#結論-13" class="headerlink" title="結論"></a>結論</h4><ul>
 <li>使用する</li>
 </ul>
+<h3 id="Function-and-Method-Decorators"><a href="#Function-and-Method-Decorators" class="headerlink" title="Function and Method Decorators"></a>Function and Method Decorators</h3><h4 id="Tips-14"><a href="#Tips-14" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>明確な利点がある場合は、デコレーターを慎重に使用してください。 staticmethod を避け、classmethod の使用を制限してください。</li>
+</ul>
+<h4 id="定義-13"><a href="#定義-13" class="headerlink" title="定義"></a>定義</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/release/2.4.3/whatsnew/node6.html">Decorators for Functions and Methods</a>一般的なデコレーターの 1 つは @property で、通常のメソッドを動的に計算される属性に変換するために使用されます。 ただし、デコレーター構文では、ユーザー定義のデコレーターも使用できます。 具体的には、関数 my_decorator の場合、次のようになります。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class C:</span><br><span class="line">    @my_decorator</span><br><span class="line">    def method(self):</span><br><span class="line">        # method body ...</span><br></pre></td></tr></table></figure>
+次と同等です。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class C:</span><br><span class="line">    def method(self):</span><br><span class="line">        # method body ...</span><br><span class="line">    method = my_decorator(method)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="メリット-14"><a href="#メリット-14" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>メソッドでいくつかの変換をエレガントに指定します。 変換により、反復的なコードが削除されたり、不変条件が適用されたりする可能性があります。</li>
+</ul>
+<h4 id="デメリット-14"><a href="#デメリット-14" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>デコレータは、関数の引数または戻り値に対して任意の操作を実行でき、驚くべき暗黙の動作をもたらします。 さらに、デコレータはオブジェクト定義時に実行されます。 モジュール レベルのオブジェクト (クラス、モジュール関数など) の場合、これはインポート時に発生します。 デコレータ コードの障害は、回復するのがほぼ不可能です。</li>
+</ul>
+<h4 id="結論-14"><a href="#結論-14" class="headerlink" title="結論"></a>結論</h4><ul>
+<li>明確な利点がある場合は、デコレーターを慎重に使用してください。 デコレーターは、関数と同じインポートおよび命名ガイドラインに従う必要があります。 Decorator pydoc は、関数がデコレータであることを明確に示す必要があります。 デコレーターの単体テストを作成します。</li>
+<li>デコレータ自体の外部依存関係を避けます (たとえば、ファイル、ソケット、データベース接続などに依存しないでください)。これは、デコレータが実行されたときに (インポート時に、おそらく pydoc または他のツールから) 利用できない可能性があるためです。 有効なパラメーターで呼び出されるデコレーターは、(可能な限り) すべてのケースで成功することが保証されている必要があります。</li>
+<li>デコレータは「トップ レベル コード」の特殊なケースです。詳細については、<a target="_blank" rel="noopener" href="https://google.github.io/styleguide/pyguide.html#s3.17-main">main</a> を参照してください。</li>
+<li>既存のライブラリで定義された API と統合するために強制されない限り、staticmethod を使用しないでください。 代わりにモジュール レベルの関数を記述します。</li>
+<li>classmethod は、名前付きコンストラクター、またはプロセス全体のキャッシュなどの必要なグローバル状態を変更するクラス固有のルーチンを記述する場合にのみ使用してください。</li>
+</ul>
+<h3 id="Threading"><a href="#Threading" class="headerlink" title="Threading"></a>Threading</h3><ul>
+<li>built-inの原子性に依存しないでください。</li>
+<li>辞書などの Python のbuilt-inデータ型にはアトミック操作があるように見えますが、それらがアトミックでないまれなケースがあり (たとえば、<strong>hash</strong> または <strong>eq</strong> が Python メソッドとして実装されている場合)、それらのアトミック性に依存するべきではありません。 また、アトミック変数の割り当てに依存するべきではありません (これは辞書に依存するため)。</li>
+<li>スレッド間でデータを通信するための推奨される方法として、Queue モジュールの Queue データ型を使用します。 それ以外の場合は、threading モジュールとそのロック プリミティブを使用します。 低レベルのロックを使用する代わりに、条件変数と threading.Condition を優先します。</li>
+</ul>
+<h3 id="Power-Features"><a href="#Power-Features" class="headerlink" title="Power Features"></a>Power Features</h3><h4 id="Tips-15"><a href="#Tips-15" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>これらの機能は避けてください。</li>
+</ul>
+<h4 id="定義-14"><a href="#定義-14" class="headerlink" title="定義"></a>定義</h4><ul>
+<li>Python は非常に柔軟な言語であり、カスタム メタクラス、バイトコードへのアクセス、オンザフライ コンパイル、動的継承、オブジェクトの再ペアレント化、インポート ハック、リフレクション (getattr() の使用など)、 システム内部、カスタマイズされたクリーンアップを実装する<code>__del__</code>メソッドなど。</li>
+</ul>
+<h4 id="メリット-15"><a href="#メリット-15" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>これらは強力な言語機能です。 コードをよりコンパクトにすることができます。</li>
+</ul>
+<h4 id="デメリット-15"><a href="#デメリット-15" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>これらの「cool」機能は、絶対に必要でない場合でも使用したくなるものです。 その下で異常な機能を使用しているコードを読んだり、理解したり、デバッグしたりするのは難しくなります。 最初は (元の作成者には) そうは見えませんが、コードを再検討すると、長くて単純なコードよりも難しくなる傾向があります。</li>
+</ul>
+<h4 id="結論-15"><a href="#結論-15" class="headerlink" title="結論"></a>結論</h4><ul>
+<li>これらの機能は避けてください。</li>
+<li>これらの機能を内部で使用する標準ライブラリ モジュールとクラスは使用してもかまいません (abc.ABCMeta、dataclasses、enum など)。</li>
+</ul>
+<h3 id="Modern-Python-from-future-imports"><a href="#Modern-Python-from-future-imports" class="headerlink" title="Modern Python: from future imports"></a>Modern Python: from <strong>future</strong> imports</h3><h4 id="Tips-16"><a href="#Tips-16" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>新しい言語バージョンのセマンティックの変更は、特別な将来のインポートの背後でゲートされ、以前のランタイム内でファイルごとに有効になる場合があります。</li>
+</ul>
+<h4 id="定義-15"><a href="#定義-15" class="headerlink" title="定義"></a>定義</h4><ul>
+<li>from <strong>future</strong> import ステートメントを介していくつかの最新機能を有効にできるため、予想される将来の Python バージョンの機能を早期に使用できます。</li>
+</ul>
+<h4 id="メリット-16"><a href="#メリット-16" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>これにより、互換性を宣言し、それらのファイル内のリグレッションを防止しながら、ファイルごとに変更を加えることができるため、ランタイム バージョンのアップグレードがよりスムーズになることが証明されています。 最新のコードは、将来のランタイム アップグレード時に問題となる技術的負債が蓄積される可能性が低いため、保守性が高くなります。</li>
+</ul>
+<h4 id="デメリット-16"><a href="#デメリット-16" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>このようなコードは、必要な future ステートメントが導入される前の非常に古いバージョンのインタープリターでは機能しない可能性があります。 この必要性は、非常に多様な環境をサポートするプロジェクトでより一般的です。</li>
+</ul>
+<h4 id="結論-16"><a href="#結論-16" class="headerlink" title="結論"></a>結論</h4><ul>
+<li><code>from __future__ imports</code>ステートメントの使用が推奨されます。 これにより、特定のソース ファイルで、より最新の Python 構文機能を今日から使用できるようになります。 機能が<code>__future__</code>インポートの背後に隠されているバージョンで実行する必要がなくなったら、それらの行を自由に削除してください。</li>
+<li><blockquote>
+<p>&#x3D; 3.7 ではなく 3.5 の古いバージョンで実行できるコードでは、以下をインポートします。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from __future__ import generator_stop</span><br></pre></td></tr></table></figure></li>
+<li>コードが十分に最新の環境でのみ使用されていると確信できるまで、これらのインポートを削除しないでください。 現在、特定の将来のインポートによって有効になる機能を現在コードで使用していない場合でも、その機能をファイル内に保持しておくことで、古い動作に依存して後でコードが誤って変更されるのを防ぐことができます。</li>
+</ul>
+<h3 id="Type-Annotated-Code"><a href="#Type-Annotated-Code" class="headerlink" title="Type Annotated Code"></a>Type Annotated Code</h3><h4 id="Tips-17"><a href="#Tips-17" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://peps.python.org/pep-0484/">PEP-484</a> に従って型ヒントで Python コードに注釈を付け、pytype のような型チェック ツールを使用してビルド時にコードを型チェックできます。</li>
+<li>型注釈は、ソースまたはスタブ pyi ファイルに含めることができます。 可能な限り、注釈はソースに含める必要があります。 サードパーティまたは拡張モジュールには pyi ファイルを使用します。</li>
+</ul>
+<h4 id="定義-16"><a href="#定義-16" class="headerlink" title="定義"></a>定義</h4><ul>
+<li>型注釈 (または「型ヒント」) は、関数またはメソッドの引数と戻り値用です。<code>def func(a: int) -&gt; list[int]:</code></li>
+<li>同様の<a target="_blank" rel="noopener" href="https://peps.python.org/pep-0526/">PEP-526</a>構文を使用して、変数の型を宣言することもできます。<code>a: SomeType = some_func()</code></li>
+</ul>
+<h4 id="メリット-17"><a href="#メリット-17" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>型注釈は、コードの可読性と保守性を向上させます。 タイプ チェッカーは、多くの実行時エラーをビルド時エラーに変換し、Power Features を使用する能力を低下させます。</li>
+</ul>
+<h4 id="デメリット-17"><a href="#デメリット-17" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>型宣言を最新の状態に保つ必要があります。 有効なコードと思われる型エラーが表示される場合があります。 タイプ チェッカーを使用すると、Power Features を使用する能力が低下する場合があります。</li>
+</ul>
+<h4 id="結論-17"><a href="#結論-17" class="headerlink" title="結論"></a>結論</h4><ul>
+<li>コードを更新するときは、Python 型分析を有効にすることを強くお勧めします。 パブリック API を追加または変更する場合は、型の注釈を含め、ビルド システムで pytype を介してチェックを有効にします。 静的解析は Python にとって比較的新しいものであるため、望ましくない副作用 (誤って推論された型など) によって一部のプロジェクトでの採用が妨げられる可能性があることを認識しています。 そのような状況では、作成者は、必要に応じて、BUILD ファイルまたはコード自体で型注釈の採用を現在妨げている問題を説明する TODO またはバグへのリンクを含むコメントを追加することをお勧めします。</li>
+</ul>
 
 
                 
