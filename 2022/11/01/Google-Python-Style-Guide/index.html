@@ -522,6 +522,21 @@ Emacs使うユーザはそのままでも大丈夫です
 <li>良い例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if not users:</span><br><span class="line">    print(&#x27;no users&#x27;)</span><br><span class="line">if i % 10 == 0:</span><br><span class="line">    self.handle_multiple_of_ten()</span><br><span class="line">def f(x=None):</span><br><span class="line">    if x is None:</span><br><span class="line">        x = []</span><br></pre></td></tr></table></figure></li>
 <li>悪い例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if len(users) == 0:</span><br><span class="line">    print(&#x27;no users&#x27;)</span><br><span class="line">if not i % 10:</span><br><span class="line">    self.handle_multiple_of_ten()</span><br><span class="line">def f(x=None):</span><br><span class="line">    x = x or []</span><br></pre></td></tr></table></figure></li>
 </ul>
+<h3 id="Lexical-Scoping"><a href="#Lexical-Scoping" class="headerlink" title="Lexical Scoping"></a>Lexical Scoping</h3><h4 id="Tips-13"><a href="#Tips-13" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>使用する</li>
+</ul>
+<h4 id="定義-12"><a href="#定義-12" class="headerlink" title="定義"></a>定義</h4><ul>
+<li>ネストされた Python 関数は、囲んでいる関数で定義された変数を参照できますが、それらに代入することはできません。 変数バインディングは、レキシカル スコープを使用して解決されます。つまり、静的プログラム テキストに基づいています。 ブロック内の名前への割り当てにより、Python はその名前へのすべての参照をローカル変数として扱います。 グローバル宣言が発生すると、名前はグローバル変数として扱われます。<br>例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def get_adder(summand1):</span><br><span class="line">    &quot;&quot;&quot;Returns a function that adds numbers to a given number.&quot;&quot;&quot;</span><br><span class="line">    def adder(summand2):</span><br><span class="line">        return summand1 + summand2</span><br><span class="line"></span><br><span class="line">    return adder</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="メリット-13"><a href="#メリット-13" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>多くの場合、より明確で洗練されたコードになります。 経験豊富な Lisp と Scheme (および Haskell と ML など) のプログラマーにとっては特に安心です。</li>
+</ul>
+<h4 id="デメリット-13"><a href="#デメリット-13" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>紛らわしいバグにつながる可能性があります。</li>
+</ul>
+<h4 id="結論-13"><a href="#結論-13" class="headerlink" title="結論"></a>結論</h4><ul>
+<li>使用する</li>
+</ul>
 
 
                 
