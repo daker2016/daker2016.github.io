@@ -495,6 +495,33 @@ Emacs使うユーザはそのままでも大丈夫です
 <li>プロパティは @property デコレータで作成する必要があります。 プロパティ記述子を手動で実装することは、強力な機能と見なされます。</li>
 <li>プロパティによる継承は、明白ではない場合があります。 サブクラスがオーバーライドおよび拡張する可能性のある計算を実装するためにプロパティを使用しないでください。</li>
 </ul>
+<h3 id="True-x2F-False-Evaluations"><a href="#True-x2F-False-Evaluations" class="headerlink" title="True&#x2F;False Evaluations"></a>True&#x2F;False Evaluations</h3><h4 id="Tips-12"><a href="#Tips-12" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>可能であれば、”implicit”false を使用してください。</li>
+</ul>
+<h4 id="定義-11"><a href="#定義-11" class="headerlink" title="定義"></a>定義</h4><ul>
+<li>boolean値のコンテキストでは、Python は特定の値を False と評価します。 簡単な「rule of thumb」では、すべての「empty」値は false と見なされるため、ブール値のコンテキストでは 0、None、[]、{}、’’ はすべて false として評価されます。</li>
+</ul>
+<h4 id="メリット-12"><a href="#メリット-12" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>Python boolean値を使用した条件は読みやすく、エラーが発生しにくくなっています。 ほとんどの場合、それらも高速です。</li>
+</ul>
+<h4 id="デメリット-12"><a href="#デメリット-12" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>C&#x2F;C++ 開発者には怪しくに見えるかもしれません。</li>
+</ul>
+<h4 id="結論-12"><a href="#結論-12" class="headerlink" title="結論"></a>結論</h4><ul>
+<li>可能であれば、「implicit」false を使用します。たとえば、if foo !&#x3D; []: ではなく、if foo: です。 ただし、留意すべきいくつかの注意事項があります。<ul>
+<li>if foo is None: (または is not None) を常に使用して、None 値をチェックします。 たとえば、デフォルトで None に設定されている変数または引数が他の値に設定されているかどうかをテストする場合などです。 もう 1 つの値は、ブール値のコンテキストでは false の値である可能性があります!</li>
+<li>&#x3D;&#x3D; を使用してブール変数を False と比較しないでください。 代わりに if not x: を使用してください。 False と None を区別する必要がある場合は、if not x と x is not None: のように式をチェーンします。</li>
+<li>シーケンス (文字列、リスト、タプル) の場合、空のシーケンスは false であるという事実を使用します。したがって、if seq: および if not seq: は、それぞれ if len(seq): および if not len(seq): よりも望ましいです。</li>
+<li>整数を処理する場合、暗黙的な false は、利点よりもリスクを伴う可能性があります (つまり、誤って None を 0 として処理する)。 整数であることがわかっている (そして len() の結果ではない) 値を整数 0 と比較することができます。</li>
+<li>‘0’ (つまり、文字列としての 0) は true と評価されることに注意してください。</li>
+<li>Numpy 配列は、暗黙的なブール値のコンテキストで例外を発生させる可能性があることに注意してください。 np.array の空をテストするときは、.size 属性を優先します (たとえば、users.size でない場合)。</li>
+</ul>
+</li>
+</ul>
+<h4 id="例-7"><a href="#例-7" class="headerlink" title="例"></a>例</h4><ul>
+<li>良い例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if not users:</span><br><span class="line">    print(&#x27;no users&#x27;)</span><br><span class="line">if i % 10 == 0:</span><br><span class="line">    self.handle_multiple_of_ten()</span><br><span class="line">def f(x=None):</span><br><span class="line">    if x is None:</span><br><span class="line">        x = []</span><br></pre></td></tr></table></figure></li>
+<li>悪い例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if len(users) == 0:</span><br><span class="line">    print(&#x27;no users&#x27;)</span><br><span class="line">if not i % 10:</span><br><span class="line">    self.handle_multiple_of_ten()</span><br><span class="line">def f(x=None):</span><br><span class="line">    x = x or []</span><br></pre></td></tr></table></figure></li>
+</ul>
 
 
                 
