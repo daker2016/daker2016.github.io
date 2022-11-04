@@ -592,10 +592,7 @@ Emacs使うユーザはそのままでも大丈夫です
 </ul>
 <h4 id="結論-16"><a href="#結論-16" class="headerlink" title="結論"></a>結論</h4><ul>
 <li><code>from __future__ imports</code>ステートメントの使用が推奨されます。 これにより、特定のソース ファイルで、より最新の Python 構文機能を今日から使用できるようになります。 機能が<code>__future__</code>インポートの背後に隠されているバージョンで実行する必要がなくなったら、それらの行を自由に削除してください。</li>
-<li><blockquote>
-<p>&#x3D; 3.7 ではなく 3.5 の古いバージョンで実行できるコードでは、以下をインポートします。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from __future__ import generator_stop</span><br></pre></td></tr></table></figure></li>
+<li>3.7以上ではなく3.5の古いバージョンで実行できるコードでは、以下をインポートします。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from __future__ import generator_stop</span><br></pre></td></tr></table></figure></li>
 <li>コードが十分に最新の環境でのみ使用されていると確信できるまで、これらのインポートを削除しないでください。 現在、特定の将来のインポートによって有効になる機能を現在コードで使用していない場合でも、その機能をファイル内に保持しておくことで、古い動作に依存して後でコードが誤って変更されるのを防ぐことができます。</li>
 </ul>
 <h3 id="Type-Annotated-Code"><a href="#Type-Annotated-Code" class="headerlink" title="Type Annotated Code"></a>Type Annotated Code</h3><h4 id="Tips-17"><a href="#Tips-17" class="headerlink" title="Tips"></a>Tips</h4><ul>
