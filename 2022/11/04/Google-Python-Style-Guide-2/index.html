@@ -13,6 +13,13 @@
     
 
     
+        <meta name="description" content="Google Python Style Guide - Python Style Rules
+Python Style RulesSemicolonsTips
+行末にコンマを使わないでください。二つステートメント間にもコンマを使わないでください。
+
+定義
+モジュール間のコードの再利用メカニズム。 例"/>
+    
 
     <!--Author-->
     
@@ -21,10 +28,17 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="daker2016&#39;s Home"/>
+        <meta property="og:title" content="Google Python Style Guide(2)"/>
     
 
     <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Google Python Style Guide - Python Style Rules
+Python Style RulesSemicolonsTips
+行末にコンマを使わないでください。二つステートメント間にもコンマを使わないでください。
+
+定義
+モジュール間のコードの再利用メカニズム。 例"/>
     
 
     <!--Open Graph Site Name-->
@@ -32,7 +46,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="article"/>
     
 
     <!--Page Cover-->
@@ -51,7 +65,7 @@
 
     <!-- Title -->
     
-    <title>Language Rules - daker2016&#39;s Home</title>
+    <title>Google Python Style Guide(2) - daker2016&#39;s Home</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -155,49 +169,115 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>#Language Rules</h1>
+                <div class="post-heading">
+                    <h1>Google Python Style Guide(2)</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2022-11-04
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Python/">#Python</a> <a href="/tags/Google-Python-Style-Guild/">#Google Python Style Guild</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/Python/">Python</a>
+
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2022/11/01/Google-Python-Style-Guide-1/">
-        <h1 class="post-title archive">
-            Google Python Style Guide
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2022-11-01
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Google-Python-Style-Guide-Python-Style-Rules"><a href="#Google-Python-Style-Guide-Python-Style-Rules" class="headerlink" title="Google Python Style Guide - Python Style Rules"></a>Google Python Style Guide - Python Style Rules</h1><hr>
+<h2 id="Python-Style-Rules"><a href="#Python-Style-Rules" class="headerlink" title="Python Style Rules"></a>Python Style Rules</h2><h3 id="Semicolons"><a href="#Semicolons" class="headerlink" title="Semicolons"></a>Semicolons</h3><h4 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li>行末にコンマを使わないでください。二つステートメント間にもコンマを使わないでください。</li>
 </ul>
+<h4 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h4><ul>
+<li>モジュール間のコードの再利用メカニズム。 例：Module BにModule Aの内容を使いたい場合、Moduleをimportすれば、使えます</li>
+</ul>
+<h4 id="メリット"><a href="#メリット" class="headerlink" title="メリット"></a>メリット</h4><ul>
+<li>namespaceの管理規則は簡単です。</li>
+<li>各識別子元の指定方式は一致すること　例：x.Obj→　対象objはmodule xに定義されることを示している</li>
+</ul>
+<h4 id="デメリット"><a href="#デメリット" class="headerlink" title="デメリット"></a>デメリット</h4><ul>
+<li>moduleの名前は競合することがある</li>
+<li>あるmoduleの名前は長すぎで、ソースは読みずらいまたはフォーマットしにくい</li>
+</ul>
+<h4 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h4><ul>
+<li><code>import x</code>：packageとmoduleのimporting</li>
+<li><code>from x import y</code>：xはpackage名、yはmodeule名</li>
+<li><code>from x import y as z</code>：同時にimportされている二つ以上のmoduleの名前が重複またはmodule yの名前が長すぎの場合、別名zを付ける</li>
+<li><code>import y as z</code>：zは標準略称の場合のみを使う　例：import nump as np</li>
+</ul>
+<h4 id="例"><a href="#例" class="headerlink" title="例"></a>例</h4><ul>
+<li><code>sound.effects.echo</code>をimportする<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from sound.effects import echo</span><br><span class="line">...</span><br><span class="line">echo.EchoFilter(input, output, delay=0.7, atten=4)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="例外"><a href="#例外" class="headerlink" title="例外"></a>例外</h4><ul>
+<li>下記のModuleに定義されているSymbols（pythonのドキュメントではクラス名，関数名や変数名を総称して、名前とかシンボルと呼んでいるよう）はstatic analysis and type checkingのため、<code>import module名</code>ではなくて、<code>from module名 import Symbol名</code>にする必要があります<ul>
+<li><code>typing</code> module</li>
+<li><code>collections.abc</code> module</li>
+<li><code>typing_extensions</code> module</li>
+</ul>
+</li>
+<li><code>six.moves</code>module中にのリダイレクト　<ul>
+<li><code>six.moves</code>はPython2とPython3のコード互換性を実現する</li>
+<li>Python3は標準ライブラリを再編成、一部functionsを別moduleに移動しました。<code>six.moves</code> moduleは一貫性のあるインタフェースを提供して、Python2とPython3のコード互換性を保障する.Importの：<code>from six.moves import urllib</code> </li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/34989206/what-does-from-six-moves-import-urllib-do-in-python">stackoverflow</a>を参照してください。</li>
+</ul>
+</li>
+</ul>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
